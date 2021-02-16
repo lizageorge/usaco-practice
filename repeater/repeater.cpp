@@ -1,7 +1,9 @@
 //---------------------------------------------------//
 
-// USACO 2018 December Bronze, Problem 1; Teleportation 
+// USACO 2018 December Silver, Problem 3; Teleportation 
 // February 16th, 2021
+
+
 
 //---------------------------------------------------//
 
@@ -19,34 +21,38 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    // setIO("repeater");
-    setIO("teleport");
+    setIO("repeater");
+    // setIO("teleport");   
 
     //---------------------BEGIN---------------------//
 
-    int a, b, x, y; cin>>a >> b >> x >> y;
-    int ans;
+    int N; cin>>N;
+    int ans = 4;
 
-    //using teleporter
-    int d_1 = abs(a -x) + abs(b-y);
-    int d_2 = abs(a -y) + abs(b-x);
+    // vector<vector<int>> grid(N);
 
-    //not using teleporter
-    int d_3 = abs(a-b);
+    // for( int i = 0; i < N; i++){
+    //     int a, b; cin>>a>> b;
 
-    // cout<<d_1<<endl;
-    // cout<<d_2<<endl;
-    // cout<<d_3<<endl;
+    //     grid[i][0] = 0;
+    //     grid[i][1] = 0;
 
-    ans = d_1;
-    if(d_2<ans){
-        ans = d_2;
-    }
-    if(d_3< ans){
-        ans = d_3;
-    }
-    
-    
+    //     // int d = abs(b-a);
+    //     // cout<<a<<endl;
+    //     // cout<<b<<endl;
+    //     // ans += d;
+    // }
+
+
+    // for(int i = 0; i < N; i++)
+    // {
+    //     for (int j = 0; j < 2; j++)
+    //     {
+    //         cout << grid[i][j] << " ";
+    //     }    
+    //     cout << endl;
+    // }
+
     cout<<ans<<endl;
 
     return 0;
@@ -57,5 +63,27 @@ int main()
     // cout<<b<<endl;
     // cout<<x<<endl;
     // cout<<y<<endl;
+
+
+    //using teleporter
+    // int d_1 = abs(a -x) + abs(b-y);
+    // int d_2 = abs(a -y) + abs(b-x);
+
+    // //not using teleporter
+    // int d_3 = abs(a-b);
+
+    // // cout<<d_1<<endl;
+    // // cout<<d_2<<endl;
+    // // cout<<d_3<<endl;
+
+    // ans = d_1;
+    // if(d_2<ans){
+    //     ans = d_2;
+    // }
+    // if(d_3< ans){
+    //     ans = d_3;
+    // }
+    
+    
 
 }
