@@ -1,6 +1,6 @@
 //---------------------------------------------------//
 
-// USACO 2015 December Bronze, Problem 1; Fence Painting 
+// USACO 2018 December Bronze, Problem 1; Teleportation 
 // January 30th, 2021
 
 //---------------------------------------------------//
@@ -17,29 +17,52 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    // setIO("repeater");
-    setIO("paint");
+    setIO("repeater");
+    // setIO("teleport");
 
     //---------------------BEGIN---------------------//
 
-    int a, b, c, d; cin>>a >> b >> c >> d;
+    int a, b, x, y; cin>>a >> b >> x >> y;
     int ans;
 
-    ans = b - a;
+    //ordering x and y, for convenience
+    if(x > y){
+        int holder = x;
+        x = y;
+        y = holder;
+    }
+    if(a > b){
+        int holder = a;
+        a = b;
+        b = holder;
+    }
 
-    
-    if(b <= c || a >= d){ //doesn't overlap
-        ans += d-c;
-    }else{              // does overlap
-        if(c < a && a<d){
-            ans+= a-c;
-        }
-        if(b < d && c<b){
-            ans+= d-b;
+
+    if (b <= x || y <= a){  //doesn't overlap
+        ans = b - a;
+        // cout<<"not overlap";
+    } else {                //overlaps
+        int without = b - a;
+        int with = abs(x - a) + abs(y-b);
+        if(without > with){
+            ans = with;
+        } else{
+            ans = without;
+            // cout<<"still chose without"<<endl;
+            // cout<<with<<endl;
         }
     }
+
     
     cout<<ans<<endl;
 
     return 0;
+
+
+
+    // cout<<a<<endl;
+    // cout<<b<<endl;
+    // cout<<x<<endl;
+    // cout<<y<<endl;
+
 }
