@@ -1,7 +1,7 @@
 //---------------------------------------------------//
 
 // USACO 2018 December Bronze, Problem 1; Teleportation 
-// January 30th, 2021
+// February 16th, 2021
 
 //---------------------------------------------------//
 
@@ -19,42 +19,33 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    setIO("repeater");
-    // setIO("teleport");
+    // setIO("repeater");
+    setIO("teleport");
 
     //---------------------BEGIN---------------------//
 
     int a, b, x, y; cin>>a >> b >> x >> y;
     int ans;
 
-    //ordering x and y, for convenience
-    if(x > y){
-        int holder = x;
-        x = y;
-        y = holder;
-    }
-    if(a > b){
-        int holder = a;
-        a = b;
-        b = holder;
-    }
+    //using teleporter
+    int d_1 = abs(a -x) + abs(b-y);
+    int d_2 = abs(a -y) + abs(b-x);
 
+    //not using teleporter
+    int d_3 = abs(a-b);
 
-    if (b <= x || y <= a){  //doesn't overlap
-        ans = b - a;
-        // cout<<"not overlap";
-    } else {                //overlaps
-        int without = b - a;
-        int with = abs(x - a) + abs(y-b);
-        if(without > with){
-            ans = with;
-        } else{
-            ans = without;
-            // cout<<"still chose without"<<endl;
-            // cout<<with<<endl;
-        }
+    // cout<<d_1<<endl;
+    // cout<<d_2<<endl;
+    // cout<<d_3<<endl;
+
+    ans = d_1;
+    if(d_2<ans){
+        ans = d_2;
     }
-
+    if(d_3< ans){
+        ans = d_3;
+    }
+    
     
     cout<<ans<<endl;
 
