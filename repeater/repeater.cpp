@@ -8,6 +8,8 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+using ll = long long;
+using vi = vector<int>;
 
 void setIO(string s){ //this function is the template that redefines the standard IO
     ios_base::sync_with_stdio(0);cin.tie(0);
