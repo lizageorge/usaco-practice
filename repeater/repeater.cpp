@@ -21,27 +21,47 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    setIO("repeater");
-    // setIO("teleport");   
+    // setIO("repeater");
+    setIO("teleport");   
 
     //---------------------BEGIN---------------------//
 
     int N; cin>>N;
-    int ans = 4;
+    // cout<<N<<endl;
+    int ans =0;
+    int min =0;
+    int max =0;
 
-    // vector<vector<int>> grid(N);
+    // cout<<min<<endl;
+    // cout<<max<<endl;
 
-    // for( int i = 0; i < N; i++){
-    //     int a, b; cin>>a>> b;
+    vector<vector<int>> grid(N);
 
-    //     grid[i][0] = 0;
-    //     grid[i][1] = 0;
+    for( int i = 0; i < N; i++){
+        int a, b; cin>>a>> b;
 
-    //     // int d = abs(b-a);
-    //     // cout<<a<<endl;
-    //     // cout<<b<<endl;
-    //     // ans += d;
-    // }
+        grid[i] = vector<int>(2);
+        grid[i][0] = a;
+        grid[i][1] = b;
+
+        if(a <= min){
+            min = a;
+        }
+        if(b <= min){
+            min = b;
+        }
+        if(a  >= max){
+            max = a;
+        }
+        if( b>=max){
+            max = b;
+        }
+
+        // int d = abs(b-a);
+        // cout<<a<<endl;
+        // cout<<b<<endl;
+        // ans += d;
+    }
 
 
     // for(int i = 0; i < N; i++)
@@ -52,6 +72,73 @@ int main()
     //     }    
     //     cout << endl;
     // }
+
+    // cout<<min<<endl;
+    // cout<<max<<endl;
+
+    int y_ = min;
+    int d_ = 0;
+    for(int i = 0; i < N; i++)
+    {
+        int a = grid[i][0];
+        int b = grid[i][1];
+
+        int ans_ = 0;
+        //using teleporter
+        int d_1 = abs(a) + abs(b-y_);
+        int d_2 = abs(a -y_) + abs(b);
+
+        //not using teleporter
+        int d_3 = abs(a-b);
+
+        // cout<<d_1<<endl;
+        // cout<<d_2<<endl;
+        // cout<<d_3<<endl;
+
+        ans_ = d_1;
+        if(d_2<ans_){
+            ans_ = d_2;
+        }
+        if(d_3< ans_){
+            ans_ = d_3;
+        }   
+
+        d_ += ans_;
+    }
+    ans = d_;
+    for(int y =min+1; y<=max; y++){
+        d_ = 0;
+        for(int i = 0; i < N; i++)
+        {
+            int a = grid[i][0];
+            int b = grid[i][1];
+
+            int ans_ = 0;
+            //using teleporter
+            int d_1 = abs(a) + abs(b-y);
+            int d_2 = abs(a -y) + abs(b);
+
+            //not using teleporter
+            int d_3 = abs(a-b);
+
+            // cout<<d_1<<endl;
+            // cout<<d_2<<endl;
+            // cout<<d_3<<endl;
+
+            ans_ = d_1;
+            if(d_2<ans_){
+                ans_ = d_2;
+            }
+            if(d_3< ans_){
+                ans_ = d_3;
+            }   
+
+            d_ += ans_;
+        }
+        if( d_ < ans){
+            ans = d_;
+        }
+    }
 
     cout<<ans<<endl;
 
