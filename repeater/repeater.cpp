@@ -26,6 +26,18 @@ int main()
 
     //---------------------BEGIN---------------------//
 
+    // This problem should have been masively oversimplified with algebra first. 
+    // after looking at the USACO answer guide, I now understand that I should have tried
+    // mapping a function f(y) that tracks total distance compared to y by first finding
+    // "breakpoints" of y where f(y) would be lowest and calculating the changes in the slope of f(y)
+    // at those points. Using those slope changes, I could have mapped all of f(y), keeping track of 
+    // and submitting the lowest value of f(y) in that process.
+    // ...
+    // I have a lot to learn lol. My current first instict is still to find a brute-force solution
+    // to every problem. I definitely couldn't have thought all of that up during a comp.    
+
+
+
     int N; cin>>N;
     // cout<<N<<endl;
     int ans =0;
