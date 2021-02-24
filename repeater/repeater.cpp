@@ -3,6 +3,9 @@
 // Practicing Using Different Data Structures
 // February 23rd, 2021
 
+// CSES Problem Set Task 1621: Distinct Numbers
+// https://cses.fi/problemset/task/1621
+
 
 
 //---------------------------------------------------//
@@ -26,18 +29,22 @@ int main()
 
     //---------------------BEGIN---------------------//
 
-    priority_queue<int> pq;
+    int n; cin >> n;
 
-    pq.push(100);
-    pq.push(1);
-    pq.push(50);
+    set<int> s;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << pq.top() <<endl;
-        pq.pop();
+        int insert; cin >> insert;
+        s.insert(insert);
+    }
+
+    int ans = 0;
+    for(int i:s){
+        ans++;
     }
     
+    cout << ans;
     
     
     return 0;
