@@ -26,18 +26,20 @@ int main()
 
     //---------------------BEGIN---------------------//
 
-    vi v;
+    priority_queue<int> pq;
 
-    for(int i =10; i >= 0; i--){
-        v.push_back(i);
+    pq.push(100);
+    pq.push(1);
+    pq.push(50);
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << pq.top() <<endl;
+        pq.pop();
     }
-
-    sort(v.begin(), v.end());
-
-    for( int i:v){
-        cout <<i<<endl;
-    }
-
+    
+    
+    
     return 0;
 
 }
