@@ -1,10 +1,10 @@
 //---------------------------------------------------//
 
-// Practicing Using Different Data Structures
-// February 23rd, 2021
+// Practicing Ad Hoc Problems
+// February 25rd, 2021
 
-// CSES Problem Set Task 1084: Apartments
-// https://cses.fi/problemset/task/1084
+// USACO 2018 January Contest, Bronze, Problem 3. Out of Place
+// usaco.org/index.php?page=viewproblem2&cpid=785
 
 
 
@@ -24,42 +24,59 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    setIO("repeater");
-    // setIO("teleport");   
+    // setIO("repeater");
+    setIO("outofplace");   
 
     //---------------------BEGIN---------------------//
 
     int ans = 0;
 
     int n; cin >> n;
-    int m; cin >> m;
-    int k; cin >> k;
+    vi heights(n);
 
-    vector<int> des;
     for (int i = 0; i < n; i++)
     {
-        int x; cin>>x;
-        des.push_back(x);
+        int x; cin >> x;
+        heights[i] = x;
     }
 
-    set<int> act;
-    for(int i = 0; i < m; i++)
-    {
-        int x; cin>>x;
-        act.insert(x);
-    }
+    int b = 0;
+    int x = heights[0];
+    int y = heights[1];
+    int count = 1;
 
-    for(int d:des){
-        for(int t = d-k; t < d+k+1; t++){
-            if(act.count(t) == 1){
-                act.erase(t);
-                ans++;
-                // cout<<"accepted des = " << d << endl;
-                break;
-            }
-        }
+    while (count < n && x <= y){
+        x = heights[count];
+        y = heights[count + 1];
+        count++;
+    }
+    b = count;
+    // cout<<b<<endl;
+
+    if( b == n){
+        cout << ans;
+        return 0;
     }
     
+
+    while(b>0 && heights[b] < heights[b-1]){
+        int distance = 1;
+        while(b-distance-1>=0 && heights[b-1]==heights[b-distance-1]){
+            distance++;
+        }
+        int temp = heights[b];
+        heights[b] = heights[b-distance];
+        heights[b-distance]= temp;
+        b-=distance;
+        ans++;
+    }
+
+
+    // for (int h:heights)
+    // {
+    //     cout<<h<<endl;
+    // }
+    // cout<<b<<endl;
     
 
     cout << ans;
