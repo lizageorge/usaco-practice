@@ -24,8 +24,8 @@ void setIO(string s){ //this function is the template that redefines the standar
 
 int main()
 {
-    // setIO("repeater");
-    setIO("outofplace");   
+    setIO("repeater");
+    // setIO("outofplace");   
 
     //---------------------BEGIN---------------------//
 
@@ -70,6 +70,7 @@ int main()
         b-=distance;
         ans++;
     }
+
 
 
     // for (int h:heights)
