@@ -1,11 +1,7 @@
 //---------------------------------------------------//
 
-// Practicing Ad Hoc Problems
-// February 25rd, 2021
-
-// USACO 2018 January Contest, Bronze, Problem 3. Out of Place
-// usaco.org/index.php?page=viewproblem2&cpid=785
-
+// Practicing Using a comparator
+// February 27rd, 2021
 
 
 //---------------------------------------------------//
@@ -22,6 +18,10 @@ void setIO(string s){ //this function is the template that redefines the standar
     freopen((s+".out").c_str(),"w",stdout);
 }
 
+bool compare(int x, int y){
+    return x > y;
+}
+
 int main()
 {
     setIO("repeater");
@@ -29,58 +29,13 @@ int main()
 
     //---------------------BEGIN---------------------//
 
-    int ans = 0;
+    vi v = {3, 8, 4, 2, 3, 1, 9};
 
-    int n; cin >> n;
-    vi heights(n);
+    sort(v.begin(), v.end(), compare);
 
-    for (int i = 0; i < n; i++)
-    {
-        int x; cin >> x;
-        heights[i] = x;
+    for(int i:v){
+        cout<<i<<endl;
     }
-
-    int b = 0;
-    int x = heights[0];
-    int y = heights[1];
-    int count = 1;
-
-    while (count < n && x <= y){
-        x = heights[count];
-        y = heights[count + 1];
-        count++;
-    }
-    b = count;
-    // cout<<b<<endl;
-
-    if( b == n){
-        cout << ans;
-        return 0;
-    }
-    
-
-    while(b>0 && heights[b] < heights[b-1]){
-        int distance = 1;
-        while(b-distance-1>=0 && heights[b-1]==heights[b-distance-1]){
-            distance++;
-        }
-        int temp = heights[b];
-        heights[b] = heights[b-distance];
-        heights[b-distance]= temp;
-        b-=distance;
-        ans++;
-    }
-
-
-
-    // for (int h:heights)
-    // {
-    //     cout<<h<<endl;
-    // }
-    // cout<<b<<endl;
-    
-
-    cout << ans;
         
     return 0;
 
