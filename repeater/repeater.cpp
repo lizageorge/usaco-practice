@@ -1,6 +1,6 @@
 //---------------------------------------------------//
 
-// Practicing Using a comparator
+// Practicing creating comparators and structs 
 // February 27rd, 2021
 
 
@@ -18,8 +18,16 @@ void setIO(string s){ //this function is the template that redefines the standar
     freopen((s+".out").c_str(),"w",stdout);
 }
 
-bool compare(int x, int y){
-    return x > y;
+struct Person {
+    char initial;
+    int age;
+};
+
+bool compare(Person p, Person q){ //sorts by age, then alphabetically
+    if(p.age == q.age){
+        return p.initial < q.initial;
+    }
+    return p.age<q.age;
 }
 
 int main()
@@ -29,12 +37,21 @@ int main()
 
     //---------------------BEGIN---------------------//
 
-    vi v = {3, 8, 4, 2, 3, 1, 9};
+    vector<Person> students;
+    
+    struct Person s = {'l', 18};
+    students.push_back(s);
+    s = {'r', 17};
+    students.push_back(s);
+    s = {'m', 17};
+    students.push_back(s);
+    s = {'m', 19};
+    students.push_back(s);
 
-    sort(v.begin(), v.end(), compare);
+    sort(students.begin(), students.end(), compare);
 
-    for(int i:v){
-        cout<<i<<endl;
+    for(Person p:students){
+        cout<< '{' << p.initial << ',' << p.age << '}' <<endl;
     }
         
     return 0;
